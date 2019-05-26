@@ -29,7 +29,7 @@ public class IndexServlet extends HttpServlet {
 
 		GongSiDao gsd=new GongSiDaoImpl();
 		List<GongSi> list=gsd.getGongSi();
-		
+		System.out.println(list);
 		request.setAttribute("list", list);
 		
 		request.getRequestDispatcher("/index.jsp").forward(request, response);

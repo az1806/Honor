@@ -1,4 +1,4 @@
-/<%@page import="com.entity.GongSi"%>
+<%@page import="com.entity.GongSi"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%
 String path = request.getContextPath();
@@ -58,7 +58,7 @@ List<GongSi> gs=(List<GongSi>)request.getAttribute("list");
         <nav>
         <ul class="header-nav-ul am-collapse am-in">
             <li class="on"><a href="index.html" name="index">首页</a></li>
-            <li><a href="about.jsp" name="about">关于我们</a></li>
+            <li><a href="about" name="about">关于我们</a></li>
             <li><a href="productlist.html" name="show">产品展示</a></li>
             <li><a href="article_list.html" name="new">新闻资讯</a></li>
             <li><a href="contact.html" name="message">联系我们</a>
@@ -98,7 +98,9 @@ List<GongSi> gs=(List<GongSi>)request.getAttribute("list");
             <article>公司介绍</article>
             <h6>COMPANY INTRODUCTION</h6>
             <main>
-            
+            <%for (int i=0;i<gs.size();i++) {%>
+            <%= gs.get(i).getJieshao() %>
+            <%} %>
             </main>
             <a class="index-button" href="#">查看详情</a>
                 </div>

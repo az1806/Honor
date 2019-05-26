@@ -13,6 +13,7 @@ public class GongSiDaoImpl implements GongSiDao{
 
 	public List<GongSi> getGongSi() {
 		List<GongSi> gsl=new ArrayList<GongSi>();
+		System.out.println("Êä³ö21");
 		ResultSet rs = DBManager.querySQL("SELECT * FROM gongsi");
 		try{
 			while(rs.next()){
@@ -27,9 +28,10 @@ public class GongSiDaoImpl implements GongSiDao{
 				gs.setWenhuaimg(rs.getString(8));
 				gs.setWenhua(rs.getString(9));
 				gs.setRexian(rs.getString(10));
+				gs.setId(rs.getInt(11));
 				gsl.add(gs);
-				return gsl;
 			}
+			return gsl;
 		}catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

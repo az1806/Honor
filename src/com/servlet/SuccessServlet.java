@@ -1,18 +1,14 @@
 package com.servlet;
 
 import java.io.IOException;
-import java.util.List;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dao.GongSiDao;
-import com.dao.impl.GongSiDaoImpl;
-import com.entity.GongSi;
-
-public class AboutServlet extends HttpServlet {
+public class SuccessServlet extends HttpServlet {
 
 	/**
 	 * The doGet method of the servlet. <br>
@@ -27,14 +23,18 @@ public class AboutServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		GongSiDao gsd=new GongSiDaoImpl();
-		
-		List<GongSi> list=gsd.getGongSi();
-		request.setAttribute("list", list);
-//		request.getRequestDispatcher("about.jsp").include(request, response);
-		request.getRequestDispatcher("about.jsp").forward(request, response);
-		
-		
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
+		out.println("<HTML>");
+		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
+		out.println("  <BODY>");
+		out.print("留言成功!感谢您的留言！");
+		out.println("'<meta http-equiv='refresh' content='4;URL=message.jsp />");
+		out.println("  </BODY>");
+		out.println("</HTML>");
+		out.flush();
+		out.close();
 	}
 
 	/**
@@ -50,7 +50,7 @@ public class AboutServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		doGet(request, response);
+		doGet(request,response);
 	}
 
 }

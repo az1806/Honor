@@ -71,29 +71,26 @@ public class MessageServlet extends HttpServlet {
 			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-//		ArrayList list=new ArrayList();
+		ArrayList list=new ArrayList();
 		String name = request.getParameter("username");
 		String tel = request.getParameter("tel");
 		String email = request.getParameter("email");
 		String liuyan = request.getParameter("liuyan");
 		
-		LiuYanDao lyd=new LiuYanDaoImpl();
-		 List<LiuYan> ly=lyd.getLiuYan();
+//		LiuYanDao lyd=new LiuYanDaoImpl();
+//		 List<LiuYan> ly=lyd.getLiuYan();
 		 
-		 int cd=ly.size()+1;
-//		 for(int i=0;i<ly.size();i++){
-//			 int s=i;
-//		 }
-//		ResultSet rs = DBManager.querySQL("SELECT id FROM liuyan ;");
-//		try {
-//			while(ly.next()){
-//			rs.getString("id");
-//			list.add(new String(rs.getString("id")));
-//}
-//		} catch (SQLException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		ResultSet rs = DBManager.querySQL("SELECT id FROM liuyan ;");
+		try {
+			while(rs.next()){
+			rs.getString("id");
+			list.add(new String(rs.getString("id")));
+}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 int cd=list.size()+1;
 		
 		
 //		lyd.addLiuYan("INSERT liuyan VALUES("+cd+",'" + name + "','"
@@ -102,6 +99,7 @@ public class MessageServlet extends HttpServlet {
 				+ tel + "','" + email + "','" + liuyan + "','Œ¥∂¡')");
 		if(n>0){
 			System.out.println("¡Ù—‘≥…π¶!");
+			 request.getRequestDispatcher("success").forward(request, response);
 		}
 
 	}

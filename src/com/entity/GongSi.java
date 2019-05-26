@@ -11,6 +11,13 @@ public class GongSi {
 	private String wenhuaimg;
 	private String wenhua;
 	private String rexian;
+	private int id;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getName() {
 		return name;
 	}
@@ -71,9 +78,10 @@ public class GongSi {
 	public void setRexian(String rexian) {
 		this.rexian = rexian;
 	}
+	
 	public GongSi(String name, String logoimg, String dizhi, String phone,
 			String email, String jieshaoimg, String jieshao, String wenhuaimg,
-			String wenhua, String rexian) {
+			String wenhua, String rexian, int id) {
 		super();
 		this.name = name;
 		this.logoimg = logoimg;
@@ -85,19 +93,21 @@ public class GongSi {
 		this.wenhuaimg = wenhuaimg;
 		this.wenhua = wenhua;
 		this.rexian = rexian;
+		this.id = id;
 	}
 	public GongSi() {
 		super();
 	}
-	
-	
 	@Override
 	public String toString() {
 		return "GongSi [name=" + name + ", logoimg=" + logoimg + ", dizhi="
 				+ dizhi + ", phone=" + phone + ", email=" + email
 				+ ", jieshaoimg=" + jieshaoimg + ", jieshao=" + jieshao
 				+ ", wenhuaimg=" + wenhuaimg + ", wenhua=" + wenhua
-				+ ", rexian=" + rexian + "]";
+				+ ", rexian=" + rexian + ", id=" + id + "]";
 	}
+	
+	
+	
 
 }

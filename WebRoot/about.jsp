@@ -94,7 +94,11 @@ List<GongSi> gs=(List<GongSi>)request.getAttribute("list");
     </div>
     <div></div>
     <div class="about-content">
-        <div class="about-image"> <img src="./images/banner3.jpg" alt=""></div>
+        <div class="about-image"> 
+        <%for(int i=0;i<gs.size();i++) {%>
+        <img src="<%= gs.get(i).getJieshaoimg() %>" alt="">
+         <%} %>
+        </div>
 
         <article>
         <%for(int i=0;i<gs.size();i++) {%>
@@ -112,7 +116,11 @@ List<GongSi> gs=(List<GongSi>)request.getAttribute("list");
         <div class="about-rightbox">
             <h1>企业文化</h1>
             <p>CORPORATE CULTURE</p>
-            <article>我们的家居一直秉承绿色的核心理念，以“贴近生活、用心服务、用爱做事”为企业核心文化价值。所有家具确保以最环保、安全、绿色为基础色调和核心基因，全心全意为您打造一个安全的、贴心的、精致的生活空间，环保、安全、精致不仅是对产品的用心打造，更是对员工、事业伙伴、用户、社会的责任和担当。</article>
+            <article>
+             <%for(int i=0;i<gs.size();i++) {%>
+        <p><%= gs.get(i).getWenhua() %></p>
+        <%} %>
+            </article>
         </div>
     </div>
 
