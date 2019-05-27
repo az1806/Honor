@@ -1,6 +1,7 @@
 package com.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -8,11 +9,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.dao.GongSiDao;
-import com.dao.impl.GongSiDaoImpl;
-import com.entity.GongSi;
+import com.dao.ZiXunDao;
+import com.dao.impl.ZiXunDaoImpl;
+import com.entity.ZiXun;
 
-public class IndexServlet extends HttpServlet {
+public class ArticleListServlet extends HttpServlet {
 
 	/**
 	 * The doGet method of the servlet. <br>
@@ -31,13 +32,11 @@ public class IndexServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		GongSiDao gsd = new GongSiDaoImpl();
-		List<GongSi> list = gsd.getGongSi();
-		System.out.println(list);
+		ZiXunDao zxd = new ZiXunDaoImpl();
+		List<ZiXun> list = zxd.getZiXun();
 		request.setAttribute("list", list);
-
-		request.getRequestDispatcher("/index.jsp").forward(request, response);
-
+		request.getRequestDispatcher("/articleList.jsp").forward(request,
+				response);
 	}
 
 	/**
@@ -58,7 +57,19 @@ public class IndexServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		doGet(request, response);
+		response.setContentType("text/html");
+		PrintWriter out = response.getWriter();
+		out.println("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01 Transitional//EN\">");
+		out.println("<HTML>");
+		out.println("  <HEAD><TITLE>A Servlet</TITLE></HEAD>");
+		out.println("  <BODY>");
+		out.print("    This is ");
+		out.print(this.getClass());
+		out.println(", using the POST method");
+		out.println("  </BODY>");
+		out.println("</HTML>");
+		out.flush();
+		out.close();
 	}
 
 }

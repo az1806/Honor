@@ -1,4 +1,13 @@
-﻿<!DOCTYPE html>
+<%@page import="com.entity.ZiXun"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+
+List<ZiXun> zx=(List<ZiXun>)request.getAttribute("list");
+%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html lang="zh-cn">
 <head>
     <title>某某家具设计公司企业官网-模板之家</title>
@@ -69,104 +78,47 @@
 </header>
 <div class="am-slider am-slider-default" data-am-flexslider="{playAfterPaused: 8000}">
     <ul class="am-slides">
-        <li><img src="/images/banner.jpg" alt="" ></li>
-        <li><img src="/images/banner.jpg" alt="" ></li>
-        <li><img src="/images/banner.jpg" alt="" ></li>
-        <li><img src="/images/banner.jpg" alt="" ></li>
+        <li><img src="images/banner.jpg" alt="" ></li>
+        <li><img src="images/banner.jpg" alt="" ></li>
+        <li><img src="images/banner.jpg" alt="" ></li>
+        <li><img src="images/banner.jpg" alt="" ></li>
     </ul>
 </div>
 <div>
-    <header class="article_list_more_header">
-     <div> <a>首页</a>&#62;<a>新闻资讯</a>&#62;<a>更多</a></div>
+    <header class="header-article-list">
+        <div class="article-position">新闻资讯</div>
+        <ul>
+            <li><a href="article_list.html">行业新闻</a></li>
+            <li><a href="article_list.html">家居百科</a></li>
+            <li><a href="article_list.html">公司新闻</a></li>
+        </ul>
+        <div class="article-more-btn">
+            <a href="article_list_more.html">MORE &#62; &#62;</a>
+        </div>
     </header>
 
     <section class="article-content">
         <ul>
+            
+<%for (int i=0;i<zx.size();i++) {%>
             <li>
                 <div class="article-date">
-                    <strong>01</strong>
+                    <strong><%= zx.get(i).getId() %></strong>
                     <p>2017/05</p>
                 </div>
                 <div class="article-info">
                     <a href="article_list_content.html">
-                        <h3>家具有哪些类型?</h3>
-                        <p>按家具从风格上可以分为：现代家具、欧式古典家具、美式家具、中式古典家具（也就是红木家具），还有近两年比较流行的新古典...</p>
+                        <h3><%= zx.get(i).getTitle() %></h3>
+                        <p><%= zx.get(i).getZixunneirong() %></p>
                     </a>
                 </div>
             </li>
-
-            <li>
-                <div class="article-date">
-                    <strong>01</strong>
-                    <p>2017/05</p>
-                </div>
-                <div class="article-info">
-                    <a href="article_list_content.html">
-                        <h3>家具有哪些类型?</h3>
-                        <p>按家具从风格上可以分为：现代家具、欧式古典家具、美式家具、中式古典家具（也就是红木家具），还有近两年比较流行的新古典...</p>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="article-date">
-                    <strong>01</strong>
-                    <p>2017/05</p>
-                </div>
-                <div class="article-info">
-                    <a href="article_list_content.html">
-                        <h3>家具有哪些类型?</h3>
-                        <p>按家具从风格上可以分为：现代家具、欧式古典家具、美式家具、中式古典家具（也就是红木家具），还有近两年比较流行的新古典...</p>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="article-date">
-                    <strong>01</strong>
-                    <p>2017/05</p>
-                </div>
-                <div class="article-info">
-                    <a href="article_list_content.html">
-                        <h3>家具有哪些类型?</h3>
-                        <p>按家具从风格上可以分为：现代家具、欧式古典家具、美式家具、中式古典家具（也就是红木家具），还有近两年比较流行的新古典...</p>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="article-date">
-                    <strong>01</strong>
-                    <p>2017/05</p>
-                </div>
-                <div class="article-info">
-                    <a href="article_list_content.html">
-                        <h3>家具有哪些类型?</h3>
-                        <p>按家具从风格上可以分为：现代家具、欧式古典家具、美式家具、中式古典家具（也就是红木家具），还有近两年比较流行的新古典...</p>
-                    </a>
-                </div>
-            </li>
-            <li>
-                <div class="article-date">
-                    <strong>01</strong>
-                    <p>2017/05</p>
-                </div>
-                <div class="article-info">
-                    <a href="article_list_content.html">
-                        <h3>家具有哪些类型?</h3>
-                        <p>按家具从风格上可以分为：现代家具、欧式古典家具、美式家具、中式古典家具（也就是红木家具），还有近两年比较流行的新古典...</p>
-                    </a>
-                </div>
-            </li>
+            
+        <%} %>    
+            
         </ul>
 
     </section>
-    <div class="article_list_more_pages">
-        <ul>
-            <li><a>上一页</a></li>
-            <li class="article-current"><a>1</a></li>
-            <li><a>2</a></li>
-            <li><a>3</a></li>
-            <li><a>下一页</a></li>
-        </ul>
-    </div>
 </div>
 ﻿<footer>
     <div>

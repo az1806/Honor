@@ -9,16 +9,14 @@ import com.dao.LiuYanDao;
 import com.entity.LiuYan;
 import com.util.DBManager;
 
-public class LiuYanDaoImpl implements LiuYanDao{
-
-	
+public class LiuYanDaoImpl implements LiuYanDao {
 
 	public List<LiuYan> getLiuYan() {
-		List<LiuYan> lyl=new ArrayList<LiuYan>();
+		List<LiuYan> lyl = new ArrayList<LiuYan>();
 		ResultSet rs = DBManager.querySQL("SELECT id FROM liuyan ;");
 		try {
-			while(rs.next()){
-				LiuYan ly=new LiuYan();
+			while (rs.next()) {
+				LiuYan ly = new LiuYan();
 				ly.setId(rs.getInt(1));
 				lyl.add(ly);
 				return lyl;

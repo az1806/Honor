@@ -60,7 +60,7 @@ List<GongSi> gs=(List<GongSi>)request.getAttribute("list");
             <li class="on"><a href="index.html" name="index">首页</a></li>
             <li><a href="about" name="about">关于我们</a></li>
             <li><a href="productlist.html" name="show">产品展示</a></li>
-            <li><a href="article_list.html" name="new">新闻资讯</a></li>
+            <li><a href="news" name="new">新闻资讯</a></li>
             <li><a href="contact.html" name="message">联系我们</a>
                 <div class="secondary-menu">
 
